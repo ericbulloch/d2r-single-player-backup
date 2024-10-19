@@ -30,7 +30,14 @@ def get_variables():
         destination = os.path.join(default_base, 'Backups')
         print(f'Using the default destination path ({destination})')
 
-    return source, destination
+    if config.get('timestamp_format'):
+        timestamp_format = config.get('timestamp_format')
+        print(f'Using timestamp_format found in config.json ({timestamp_format})')
+    else:
+        timestamp_format = "%Y.%m.%d.%H.%M.%S"
+        print(f'Using the default timestamp_format ({timestamp_format})')
+
+    return source, destination, timestamp_format
 
 
 def get_most_recent_backup(destination):
@@ -44,12 +51,12 @@ def get_most_recent_backup(destination):
 
 
 def main():
-    source, base_destination = get_variables()
+    source, base_destination, timestamp_format = get_variables()
     most_recent = get_most_recent_backup(base_destination)
     if most_recent:
         print('')
         print(f'Most recent backup was on {most_recent}')
-    time = datetime.now().strftime("%Y.%m.%d.%H.%M.%S")
+    time = datetime.now().strftime(timestamp_format)
     print('')
     print(f'Using timestamp {time} for this backup folder name')
     print('')
