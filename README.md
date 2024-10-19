@@ -14,7 +14,7 @@ I was able to rebuilt my character using another tool but I really didn't like h
 
 It will copy all the files in the `C:\Users\<username>\Saved Games\Diablo II Resurrected` folder into the `C:\Users\<username>\Saved Games\Backup\<current_time>` folder.
 
-**You can override these settings in a `config.json` file.** You can read about this in the [Configuration section](##Configuration)
+**You can override these settings in a `config.json` file.** You can read about this in the [Configuration section](#configuration)
 
 When you navigate to the `Backups\Diablo II Resurrected` folder, you will see a folder with a timestamp as the name. It will have all your characters in it.
 
