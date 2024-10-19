@@ -27,7 +27,7 @@ def get_variables():
         destination = config.get('destination')
         print(f'Using destination path found in config.json ({destination})')
     else:
-        destination = os.path.join(default_base, 'Backups')
+        destination = os.path.join(default_base, 'Backups', 'Diablo II Resurrected')
         print(f'Using the default destination path ({destination})')
 
     if config.get('timestamp_format'):
@@ -60,7 +60,7 @@ def main():
     print('')
     print(f'Using timestamp {time} for this backup folder name')
     print('')
-    destination = os.path.join(base_destination, time, "Diablo II Resurrected")
+    destination = os.path.join(base_destination, time)
     print(f"Saving the '{source}' directory to the '{destination}' directory")
     shutil.copytree(source, destination)
     print('Backup complete!')

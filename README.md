@@ -16,15 +16,9 @@ It will copy all the files in the `C:\Users\<username>\Saved Games\Diablo II Res
 
 ** You can override these settings in a `config.json` file. ** You can read about this in the [Configuration section](## Configuration)
 
-Here is an example of the created `Backup` folder.
+When you navigate to the `Backups\Diablo II Resurrected` folder, you will see a folder with a timestamp as the name. It will have all your characters in it.
 
-![Backup folder](images/backup-folder.png)
-
-Here is an example of the folders that are created in the `Backup` folder.
-
-![Backups in the Backup folder](images/backups.png)
-
-Each of these backup folders has all the characters that were in the source directory at the time of the backup.
+![Backup Sample](images/backup-sample.png)
 
 ## How to install and run
 
