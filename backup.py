@@ -81,7 +81,6 @@ def main():
     source, base_destination, timestamp_format, prune = get_variables()
     if prune:
         print('Started pruning files')
-        prune_files(source)
         prune_files(base_destination)
         print('Finished pruning files')
     most_recent = get_most_recent_backup(base_destination)
