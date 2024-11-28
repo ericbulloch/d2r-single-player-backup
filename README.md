@@ -8,7 +8,7 @@ I was working on my single player holy grail when the power went out and one of 
 
 After being unable to restore the character, I wrote this script to help prevent this problem in the future.
 
-I was able to rebuilt my character using another tool but I really didn't like how long that took.
+I was able to rebuild my character using another tool but I really didn't like how long that took. I want to save myself and others from the same experience.
 
 ## What it does
 
@@ -16,9 +16,11 @@ It will copy all the files in the `C:\Users\<username>\Saved Games\Diablo II Res
 
 **You can override these settings in a `config.json` file.** You can read about this in the [Configuration section](#configuration)
 
-When you navigate to the `Backups\Diablo II Resurrected` folder, you will see a folder with a timestamp as the name. It will have all your characters in it.
+When you navigate to the `Backups\Diablo II Resurrected` folder, you will see a folder with a timestamp as the name. It will have all your single player characters in it.
 
 ![Backup Sample](images/backup-sample.png)
+
+**Please note:** logging into Battle Net also causes your online characters' `.ctlo` files to get downloaded. I am not completely sure what these files do but I think it has information like name, level and what gear is equipped. My guess is that it uses this information so that it can display and render your character on the character selection page. Anyways, this script, by default, will prune those `.ctlo` files from previous backups.
 
 ## How to install and run
 
