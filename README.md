@@ -34,10 +34,12 @@ The script uses Python. It was tested on Python 3.10+ and uses only standard lib
 
 ## Configuration
 
-If you want to change the default `source`, `destination` or `timestamp_format` you can create a `config.json` file. The `config.json.example` file has been provided to make this easier and provide a sample.
+If you want to change the default **source**, **destination** or **timestamp_format** you can create a `config.json` file and keep it in the directory you run the backup script in. The `config.json.example` file has been provided to make this easier and provide a sample.
 
 ### Configuration Settings
 
-- `source`: Where your single player character files are located
-- `destination`: Where you want to save a backup at. **The `timestamp_format` will be added to the end of this path.**
-- `timestamp_format`: The Python strftime format codes. You can read about them [here](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes).
+| parameter  | description  | default value |
+| ---------- | ------------ | ------------- |
+| **source**  | Where the single player character files are stored.  | The windows location of `C:\Users\<my_user>\Saved Games\Backups`  |
+| **destination**  | Where the backup will be located when the script runs.  | The windows location of `C:\Users\<my_user>\Saved Games\Diablo II Resurrected` with the **timestamp_format** parameter below appended to this path.  |
+| **timestamp_format**  | A timestamp using the Python strftime format codes. You can read about them [here](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes).  | The code uses `%Y.%m.%d.%H.%M.%S`. If the backup script was ran on exactly April 11th, 2025 at 2:34pm the output would be `2025.04.11.14.34.00`  |
