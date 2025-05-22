@@ -52,7 +52,6 @@ def get_most_recent_backup(destination):
         most_recent = max([d for d in os.listdir(destination) if os.path.isdir(os.path.join(destination, d))])
         if most_recent:
             return most_recent
-            # print(f'Most recent update was on {most_recent}')
     except (FileNotFoundError, ValueError):
         return None
 
