@@ -36,6 +36,19 @@ Navigate to the directory with the backup.py script and run the following comman
 
 The backup.py script was tested on Python 3.10+ and uses only standard libraries so it should work with most versions of Python 3.
 
+The output will look like the following:
+
+```bash
+Using the default source path (C:\Users\<my_user>\Saved Games\Diablo II Resurrected)
+Using the default destination path (C:\Users\<my_user>\Saved Games\Backups\Diablo II Resurrected)
+Using the default timestamp_format (%Y.%m.%d.%H.%M.%S)
+Using the default prune (True)
+Started pruning files
+Pruned C:\Users\<my_user>\Saved Games\Backups\Diablo II Resurrected\2025.09.01.03.48.09
+ - Deleted C:\Users\<my_user>\Saved Games\Backups\Diablo II Resurrected\2025.09.01.03.48.09\Alpha75194046.ctlo
+Finished pruning files
+```
+
 ## Configuration
 
 If you want to change the default **source**, **destination**, **timestamp_format** or **prune** settings, you can create a `config.json` file. Store the file in the same directory you run the backup.py script in. The `config.json.example` file has been provided to make this easier and provide an example for you.
