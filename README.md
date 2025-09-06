@@ -32,13 +32,8 @@ This script, by default, will prune those `.ctlo` files from previous backups.
 
 Navigate to the directory with the backup.py script and run the following command:
 
-`python backup.py`
-
-The backup.py script was tested on Python 3.10+ and uses only standard libraries so it should work with most versions of Python 3.
-
-The output will look like the following:
-
 ```bash
+$ python backup.py
 Using the default source path (C:\Users\<my_user>\Saved Games\Diablo II Resurrected)
 Using the default destination path (C:\Users\<my_user>\Saved Games\Backups\Diablo II Resurrected)
 Using the default timestamp_format (%Y.%m.%d.%H.%M.%S)
@@ -56,6 +51,8 @@ Using timestamp 2025.09.05.23.35.09 for this backup folder name
 Saving the 'C:\Users\<my_user>\Saved Games\Diablo II Resurrected' directory to the 'C:\Users\<my_user>\Saved Games\Backups\Diablo II Resurrected\2025.09.05.23.35.09' directory
 Backup complete!
 ```
+
+The backup.py script was tested on Python 3.10+ and uses only standard libraries so it should work with most versions of Python 3.
 
 ## Configuration
 
