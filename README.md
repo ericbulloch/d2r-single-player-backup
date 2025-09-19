@@ -12,6 +12,10 @@ I want to save myself and others from the same experience. I wrote this script a
 
 I wanted it to be very simple and not use any 3rd party libraries. It uses a simple configuration file and vanilla Python.
 
+## It worked!
+
+I had an incident similar to the one described above. I was able to restore the shared stash and my character only lost out on a couple hours of experience grinding!
+
 ## What it does
 
 It will copy all the files in the `C:\Users\<username>\Saved Games\Diablo II Resurrected` folder into the `C:\Users\<username>\Saved Games\Backup\<current_time>` folder.
