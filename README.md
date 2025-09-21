@@ -53,6 +53,10 @@ Most recent backup was on 2025.09.01.03.48.09
 Using timestamp 2025.09.05.23.35.09 for this backup folder name
 
 Saving the 'C:\Users\<my_user>\Saved Games\Diablo II Resurrected' directory to the 'C:\Users\<my_user>\Saved Games\Backups\Diablo II Resurrected\2025.09.05.23.35.09' directory
+
+There are 31 backups and there can only be 30
+Removing the following 1 backups:
+C:\Users\<my_user>\Saved Games\Backups\Diablo II Resurrected\2025.08.07.03.40.56
 Backup complete!
 ```
 
