@@ -2,5 +2,7 @@
 	"destination": "C:\\Users\\myuser\\Saved Games\\Backups",
 	"source": "C:\\Users\\myuser\\Saved Games\\Diablo II Resurrected",
 	"timestamp_format": "%Y.%m.%d.%H.%M.%S",
-	"prune": true
+	"prune": true,
+	"limit_backups": true,
+	"number_of_backups": 10
 }
