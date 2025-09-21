@@ -26,7 +26,7 @@ def get_variables():
         source = os.path.join(default_base, 'Diablo II Resurrected')
         print(f'Using the default source path ({source})')
 
-    if not os.is_dir(source):
+    if not os.path.isdir(source):
         raise ValueError(f'{source} is not a valid directory')
 
     if 'destination' in config:
@@ -36,7 +36,7 @@ def get_variables():
         destination = os.path.join(default_base, 'Backups', 'Diablo II Resurrected')
         print(f'Using the default destination path ({destination})')
 
-    if not os.is_dir(destination):
+    if not os.path.isdir(destination):
         raise ValueError(f'{destination} is not a valid directory')
 
     if 'timestamp_format' in config:
@@ -76,7 +76,9 @@ def get_variables():
     if number_of_backups < 0:
         raise ValueError(f'{number_of_backups} must be greater than zero')
 
-    return source, destination, timestamp_format, prune, limit_backups, number_of_backups
+    return dict(source=source, destination=destination,
+        timestamp_format=timestamp_format, prune=prune,
+        limit_backups=limit_backups, number_of_backups=number_of_backups)
 
 
 def get_most_recent_backup(destination):
@@ -120,24 +122,24 @@ def remove_old_backups(base_destination, number_of_backups):
 
 
 def main():
-    source, base_destination, timestamp_format, prune, limit_backups, number_of_backups = get_variables()
-    if prune:
+    config = get_variables()
+    if config.get('prune'):
         print('Started pruning files')
-        prune_files(base_destination)
+        prune_files(config.get('destination'))
         print('Finished pruning files')
-    most_recent = get_most_recent_backup(base_destination)
+    most_recent = get_most_recent_backup(config.get('destination'))
     if most_recent:
         print('')
         print(f'Most recent backup was on {most_recent}')
-    time = datetime.now().strftime(timestamp_format)
+    time = datetime.now().strftime(config.get('timestamp_format'))
     print('')
     print(f'Using timestamp {time} for this backup folder name')
     print('')
-    destination = os.path.join(base_destination, time)
-    print(f"Saving the '{source}' directory to the '{destination}' directory")
-    shutil.copytree(source, destination)
-    if limit_backups:
-        remove_old_backups(base_destination, number_of_backups)
+    destination = os.path.join(config.get("destination"), time)
+    print(f"Saving the '{config.get("source")}' directory to the '{destination}' directory")
+    shutil.copytree(config.get("source"), destination)
+    if config.get('limit_backups'):
+        remove_old_backups(config.get('destination'), config.get('number_of_backups'))
     else:
         print('Not limiting the number of backups')
     print('Backup complete!')
