@@ -26,12 +26,18 @@ def get_variables():
         source = os.path.join(default_base, 'Diablo II Resurrected')
         print(f'Using the default source path ({source})')
 
+    if not os.is_dir(source):
+        raise ValueError(f'{source} is not a valid directory')
+
     if 'destination' in config:
         destination = config.get('destination')
         print(f'Using destination path found in config.json ({destination})')
     else:
         destination = os.path.join(default_base, 'Backups', 'Diablo II Resurrected')
         print(f'Using the default destination path ({destination})')
+
+    if not os.is_dir(destination):
+        raise ValueError(f'{destination} is not a valid directory')
 
     if 'timestamp_format' in config:
         timestamp_format = config.get('timestamp_format')
@@ -63,6 +69,12 @@ def get_variables():
             print(f'Using the default number_of_backups ({number_of_backups})')
     else:
         number_of_backups = 1
+
+    if not isinstance(number_of_backups, (int)):
+        raise ValueError(f'{number_of_backups} must be an integer')
+
+    if number_of_backups < 0:
+        raise ValueError(f'{number_of_backups} must be greater than zero')
 
     return source, destination, timestamp_format, prune, limit_backups, number_of_backups
 
