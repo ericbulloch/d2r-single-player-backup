@@ -70,5 +70,7 @@ If you want to change the default **source**, **destination**, **timestamp_forma
 | **destination** | Where the backup will be located when the script runs. | The windows location of `C:\Users\<my_user>\Saved Games\Diablo II Resurrected` with the **timestamp_format** parameter below appended to this path. |
 | **timestamp_format** | A timestamp using the Python strftime format codes. You can read about them [here](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes). | The code uses `%Y.%m.%d.%H.%M.%S`. If the backup script was ran on exactly April 11th, 2025 at 2:34pm the output would be `2025.04.11.14.34.00` |
 | **prune** | When set to true, the backup.py script will go through all previous backups and remove the `.ctlo` files. These files are used by online characters. When these files are deleted, they are downloaded again by the game. They take up extra space in the backup folders so they get pruned. | true |
+| **limit_backups** | If set to true the script will only keep the number of backups specified by the **number_of_backups** setting. | true |
+| **number_of_backups** | If **limit_backups** is set to true the script will only keep the number of backups specified by this setting. | 30 |
 
 **Please note:** the `config.json` file only needs to be used if you are overriding a value. If you do not provide a value or the `config.json` files was not found, the backup.py script will use the default value mentioned in the table above.
