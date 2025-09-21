@@ -1,6 +1,7 @@
 from datetime import datetime
 import json
 import os
+from pathlib import Path
 import shutil
 
 
@@ -44,7 +45,24 @@ def get_variables():
         prune = True
         print(f'Using the default prune ({prune})')
 
-    return source, destination, timestamp_format, prune
+    if 'limit_backups' in config:
+        limit_backups = config.get('limit_backups')
+        print(f'Using limit_backups found in config.json ({limit_backups})')
+    else:
+        limit_backups = True
+        print(f'Using the default limit_backups ({limit_backups})')
+
+    if limit_backups:
+        if 'number_of_backups' in config:
+            number_of_backups = config.get('number_of_backups')
+            print(f'Using number_of_backups found in config.json ({number_of_backups})')
+        else:
+            number_of_backups = 10
+            print(f'Using the default number_of_backups ({number_of_backups})')
+    else:
+        number_of_backups = -1
+
+    return source, destination, timestamp_format, prune, limit_backups, number_of_backups
 
 
 def get_most_recent_backup(destination):
@@ -76,8 +94,19 @@ def prune_files(base_directory):
                 print(f' - Deleted {f}')
 
 
+def remove_old_backups(base_destination, number_of_backups):
+    backup_folder = Path(base_destination)
+    backups = sorted((p for p in backup_folder.iterdir() if p.is_dir()), key=lambda p: p.stat().st_ctime)
+    if len(backups) > number_of_backups:
+        print(f'\nThere are {len(backups)} backups and there can only be {number_of_backups}')
+        print(f'Removing the following {len(backups) - number_of_backups} backups:')
+        for b in backups[:-1 * number_of_backups]:
+            print(b)
+            shutil.rmtree(b)
+
+
 def main():
-    source, base_destination, timestamp_format, prune = get_variables()
+    source, base_destination, timestamp_format, prune, limit_backups, number_of_backups = get_variables()
     if prune:
         print('Started pruning files')
         prune_files(base_destination)
@@ -93,6 +122,10 @@ def main():
     destination = os.path.join(base_destination, time)
     print(f"Saving the '{source}' directory to the '{destination}' directory")
     shutil.copytree(source, destination)
+    if limit_backups:
+        remove_old_backups(base_destination, number_of_backups)
+    else:
+        print('Not limiting the number of backups')
     print('Backup complete!')
 
 
