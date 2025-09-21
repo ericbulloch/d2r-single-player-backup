@@ -8,7 +8,9 @@ import shutil
 def get_variables():
     username = os.environ['USERPROFILE'].split('\\')[-1]
     default_base = os.path.join('C:\\', 'Users', username, 'Saved Games')
-    config_file_path = 'config.json'
+    script_path = os.path.abspath(__file__)
+    script_directory = os.path.dirname(script_path)
+    config_file_path = os.path.join(script_directory, 'config.json')
     config = dict()
 
     if os.path.isfile(config_file_path):
