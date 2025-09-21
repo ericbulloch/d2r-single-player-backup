@@ -57,7 +57,7 @@ def get_variables():
             number_of_backups = config.get('number_of_backups')
             print(f'Using number_of_backups found in config.json ({number_of_backups})')
         else:
-            number_of_backups = 10
+            number_of_backups = 30
             print(f'Using the default number_of_backups ({number_of_backups})')
     else:
         number_of_backups = -1
