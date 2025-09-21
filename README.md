@@ -60,7 +60,7 @@ The backup.py script was tested on Python 3.10+ and uses only standard libraries
 
 ## Configuration
 
-If you want to change the default **source**, **destination**, **timestamp_format** or **prune** settings, you can create a `config.json` file. Store the file in the same directory you run the backup.py script in. The `config.json.example` file has been provided to make this easier and provide an example for you.
+If you want to change the default **source**, **destination**, **timestamp_format**, **prune**, **limit_backups** or **number_of_backups*** settings, you can create a `config.json` file. Store the file in the same directory you run the backup.py script in. The `config.json.example` file has been provided to make this easier and provide an example for you.
 
 ### Configuration Settings
 
